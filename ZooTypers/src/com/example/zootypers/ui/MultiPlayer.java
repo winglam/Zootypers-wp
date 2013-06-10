@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,8 +42,6 @@ import com.parse.Parse;
 @SuppressWarnings("unused")
 @SuppressLint("NewApi")
 public class MultiPlayer extends Player {
-	// boolean to flag our use of a test database or not
-	private boolean useTestDB;
 
 	// the username of the user currently trying to play a game
 	private String username;
@@ -102,6 +101,7 @@ public class MultiPlayer extends Player {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		// Get animal & background selected by user
 
 		View inflatedView = 
@@ -113,10 +113,8 @@ public class MultiPlayer extends Player {
 		bg = getIntent().getIntExtra("bg", 0);
 		background = ((ImageButton) inflatedView.findViewById(bg)).getDrawable();
 
-		// Initialize the database according to whether it's a test or not.
-		useTestDB = getIntent().getBooleanExtra("Testing", false);
-
-		if (useTestDB) { //The Testing Database on Parse
+		Log.d("MultiPlayer: Using Test Database", "" +TitlePage.useTestDB);
+		if (TitlePage.useTestDB) { //The Testing Database on Parse
 			Parse.initialize(this, "E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
 					"hzPRfP284H5GuRzIFDhVxX6iR9sgTwg4tJU08Bez"); 
 		} else { //The Real App Database on Parse
@@ -290,10 +288,15 @@ public class MultiPlayer extends Player {
 	/**
 	 * Called when the user types a letter; passes the letter to the model.
 	 */
-	public boolean onKeyDown(final int key, final KeyEvent event){     
-		char charTyped = event.getDisplayLabel();
-		charTyped = Character.toLowerCase(charTyped);
-		model.typedLetter(charTyped);
+	public boolean onKeyDown(final int key, final KeyEvent event){		
+		if (key == KeyEvent.KEYCODE_VOLUME_DOWN || key == KeyEvent.KEYCODE_VOLUME_UP) {
+			Log.i("Multiplayer", "pressed volume button");
+			super.onKeyDown(key, event);
+		} else {
+			char charTyped = event.getDisplayLabel();
+			charTyped = Character.toLowerCase(charTyped);
+			model.typedLetter(charTyped);
+		}
 		return true;
 	}
 

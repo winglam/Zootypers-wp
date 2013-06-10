@@ -6,6 +6,7 @@ import android.app.ActionBar.Tab;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -43,16 +44,15 @@ public class Leaderboard extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		Log.i("Leaderboard", "entered leaderboard");
 
 		// set the layout for the parent activity which contains the fragments
 		setContentView(R.layout.activity_leaderboard);
 
 		// Initialize the database according to whether it's a test or not.
-		boolean useTestDB = getIntent().getBooleanExtra("Testing", false);
-
-		if (useTestDB) { //The Testing Database on Parse
+		Log.d("Leaderboard: Using Test Database", "" +TitlePage.useTestDB);
+		if (TitlePage.useTestDB) { //The Testing Database on Parse
 			Parse.initialize(this, "E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
 			"hzPRfP284H5GuRzIFDhVxX6iR9sgTwg4tJU08Bez"); 
 		} else { //The Real App Database on Parse

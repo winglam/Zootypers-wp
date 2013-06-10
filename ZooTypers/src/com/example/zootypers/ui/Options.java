@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class Options extends Activity {
 		Log.i("Options", "entered options");
 
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		setContentView(R.layout.activity_options);
 		lp = new LoginPopup(currentUser);
 
@@ -125,10 +127,9 @@ public class Options extends Activity {
 	public final void clearMulti(final View view) {
 		Log.i("Options", "clearing multiplayer leaderboard");
 
-		useTestDB = getIntent().getBooleanExtra("Testing", false);
-
 		// Initialize the database
-		if (useTestDB) {
+		Log.d("Options: Using Test Database", "" +TitlePage.useTestDB);
+		if (TitlePage.useTestDB) {
 			Parse.initialize(this, "E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
 					"hzPRfP284H5GuRzIFDhVxX6iR9sgTwg4tJU08Bez"); 
 		} else {
