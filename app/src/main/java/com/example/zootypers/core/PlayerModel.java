@@ -62,12 +62,7 @@ public abstract class PlayerModel extends Observable {
 	public void populateDisplayedList() {
 		// adds a total of numWordsDisplayed words to the original display list
 		for (int i = 0; i < numWordsDisplayed; i++) {
-			// checks to see if any of the words start with the same letter as the 
-			// current word that might be added, if it does than increment to the next
-			// potential word
-			while (currFirstLetters.contains(wordsList.get(nextWordIndex).charAt(0))) {
-				nextWordIndex++;
-			}
+			updateNextWordIndex();
 			currFirstLetters.add(wordsList.get(nextWordIndex).charAt(0));
 			wordsDisplayed[i] = nextWordIndex;
 			currWordIndex = i;
@@ -86,14 +81,7 @@ public abstract class PlayerModel extends Observable {
 	 */
 	protected void updateWordsDisplayed() {
 		currFirstLetters.remove(wordsList.get(wordsDisplayed[currWordIndex]).charAt(0));
-		// checks if the remaining words being displayed has the same first letter as the
-		// first letter of the potential next word, increment if it does and check again.
-		while (currFirstLetters.contains(wordsList.get(nextWordIndex).charAt(0))) {
-			nextWordIndex++;
-			if (nextWordIndex >= wordsList.size()) {
-				nextWordIndex = 0;
-			}
-		}
+		updateNextWordIndex();
 		// by this point the next word should not have the same first letter
 		currFirstLetters.add(wordsList.get(nextWordIndex).charAt(0));
 		wordsDisplayed[currWordIndex] = nextWordIndex;
@@ -150,5 +138,18 @@ public abstract class PlayerModel extends Observable {
 	 */
 	public final int[] getWordsDisplayed() {
 		return wordsDisplayed;
+	}
+
+	/**
+	 * checks if the remaining words being displayed has the same first letter as the
+	 * first letter of the potential next word, increment if it does and check again.
+	 */
+	private void updateNextWordIndex() {
+		while (currFirstLetters.contains(wordsList.get(nextWordIndex).charAt(0))) {
+			nextWordIndex++;
+			if (nextWordIndex >= wordsList.size()) {
+				nextWordIndex = 0;
+			}
+		}
 	}
 }
