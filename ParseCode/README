@@ -1,0 +1,6 @@
+The contents of this folder contain credentials to directly push changes to our cloud code and website. 
+THEREFORE THIS CONTENT SHOULD NOT BE PUBLICLY ACCESSIBLE BY ANYONE.
+
+Run the following command to download parse to deploy the contents of this folder to parse.
+
+curl -s https://www.parse.com/downloads/cloud_code/installer.sh | sudo /bin/bash
