@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.example.zootypers"
+        minSdkVersion 14
+        targetSdkVersion 17
+
+        testApplicationId "com.example.zootypers.test"
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:18.0.0'
+    compile files('libs/Parse-1.2.5.jar')
+    compile files('libs/commons-io-2.4.jar')
+    compile files('libs/findbugs-ant.jar')
+    compile files('libs/junit-4.10.jar')
+    compile files('libs/robotium-solo-4.1-javadoc.jar')
+    compile files('libs/robotium-solo-4.1.jar')
+}
