@@ -1,7 +1,5 @@
 package com.example.zootypers.test;
 
-import org.junit.Test;
-
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import android.widget.Button;
@@ -12,15 +10,15 @@ import com.example.zootypers.ui.SinglePlayer;
 import com.example.zootypers.ui.TitlePage;
 import com.jayway.android.robotium.solo.Solo;
 
+import org.junit.Test;
+
 /**
- * Testing the Pre-Game Selection screen by checking and clicking all the
- * buttons, selecting all the animal choices, selecting all the background,
- * and also checking it goes to the single player correctly.
- * 
+ * Testing the Pre-Game Selection screen by checking and clicking all the buttons, selecting all the animal choices,
+ * selecting all the background, and also checking it goes to the single player correctly.
+ * <p/>
  * (Black box testing of the pre-game selection UI.)
- * 
- * @author dyxliang
  *
+ * @author dyxliang
  */
 public class PreGameSelectionTest extends ActivityInstrumentationTestCase2<PreGameSelection> {
 
@@ -41,15 +39,15 @@ public class PreGameSelectionTest extends ActivityInstrumentationTestCase2<PreGa
         super.setUp();
         solo = new Solo(getInstrumentation(), getActivity());
         easyButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.easy_difficulty_button);
+                                                   findViewById(com.example.zootypers.R.id.easy_difficulty_button);
         mediumButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.medium_difficulty_button);
+                                                     findViewById(com.example.zootypers.R.id.medium_difficulty_button);
         hardButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.hard_difficulty_button);
+                                                   findViewById(com.example.zootypers.R.id.hard_difficulty_button);
         menuButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.menu_button);
+                                                   findViewById(com.example.zootypers.R.id.menu_button);
         continueButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.continue_button);
+                                                       findViewById(com.example.zootypers.R.id.continue_button);
     }
 
     /**
@@ -129,8 +127,7 @@ public class PreGameSelectionTest extends ActivityInstrumentationTestCase2<PreGa
      */
     @Test(timeout = TIMEOUT)
     public void testSelectingElephantButtonWorks() {
-        final ImageButton imageButton = (ImageButton) 
-		solo.getView(com.example.zootypers.R.id.elephant_button);
+        final ImageButton imageButton = (ImageButton) solo.getView(com.example.zootypers.R.id.elephant_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -148,8 +145,7 @@ public class PreGameSelectionTest extends ActivityInstrumentationTestCase2<PreGa
      */
     @Test(timeout = TIMEOUT)
     public void testSelectionKangarooButtonWorks() {
-        final ImageButton imageButton = (ImageButton) 
-		solo.getView(com.example.zootypers.R.id.kangaroo_button);
+        final ImageButton imageButton = (ImageButton) solo.getView(com.example.zootypers.R.id.kangaroo_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -167,8 +163,7 @@ public class PreGameSelectionTest extends ActivityInstrumentationTestCase2<PreGa
      */
     @Test(timeout = TIMEOUT)
     public void testSelectionPandaButtonWorks() {
-        final ImageButton imageButton = (ImageButton) 
-		solo.getView(com.example.zootypers.R.id.panda_button);
+        final ImageButton imageButton = (ImageButton) solo.getView(com.example.zootypers.R.id.panda_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -186,8 +181,7 @@ public class PreGameSelectionTest extends ActivityInstrumentationTestCase2<PreGa
      */
     @Test(timeout = TIMEOUT)
     public void testSelectingGrasslandBackground() {
-        final ImageButton imageButton = (ImageButton) 
-		solo.getView(com.example.zootypers.R.id.BG1_button);
+        final ImageButton imageButton = (ImageButton) solo.getView(com.example.zootypers.R.id.BG1_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -205,8 +199,7 @@ public class PreGameSelectionTest extends ActivityInstrumentationTestCase2<PreGa
      */
     @Test(timeout = TIMEOUT)
     public void testingSelectingRainbowBackground() {
-        final ImageButton imageButton = (ImageButton) 
-		solo.getView(com.example.zootypers.R.id.BG2_button);
+        final ImageButton imageButton = (ImageButton) solo.getView(com.example.zootypers.R.id.BG2_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {

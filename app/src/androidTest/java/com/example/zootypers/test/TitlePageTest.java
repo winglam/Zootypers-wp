@@ -1,7 +1,5 @@
 package com.example.zootypers.test;
 
-import org.junit.Test;
-
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Suppress;
 import android.widget.Button;
@@ -11,14 +9,15 @@ import com.example.zootypers.ui.PreGameSelection;
 import com.example.zootypers.ui.TitlePage;
 import com.jayway.android.robotium.solo.Solo;
 
+import org.junit.Test;
+
 
 /**
  * Testing the title page using android unit tests and Robotium tests.
- * 
+ * <p/>
  * (Black box testing of the title page UI.)
- * 
- * @author dyxliang
  *
+ * @author dyxliang
  */
 public class TitlePageTest extends ActivityInstrumentationTestCase2<TitlePage> {
 
@@ -39,14 +38,10 @@ public class TitlePageTest extends ActivityInstrumentationTestCase2<TitlePage> {
         solo = new Solo(getInstrumentation(), getActivity());
 
         //initialize the buttons for testing purposes
-        singlePlayerButton = (Button) getActivity().findViewById
-		(com.example.zootypers.R.id.single_player_button);
-        multiplayerButton = (Button) getActivity().findViewById
-		(com.example.zootypers.R.id.multiplayer_button);
-        leaderboardButton = (Button) getActivity().findViewById
-		(com.example.zootypers.R.id.leaderboard_button);
-        optionsButton = (Button) getActivity().findViewById
-		(com.example.zootypers.R.id.options_button);
+        singlePlayerButton = (Button) getActivity().findViewById(com.example.zootypers.R.id.single_player_button);
+        multiplayerButton = (Button) getActivity().findViewById(com.example.zootypers.R.id.multiplayer_button);
+        leaderboardButton = (Button) getActivity().findViewById(com.example.zootypers.R.id.leaderboard_button);
+        optionsButton = (Button) getActivity().findViewById(com.example.zootypers.R.id.options_button);
 
         solo.sleep(1000);
     }

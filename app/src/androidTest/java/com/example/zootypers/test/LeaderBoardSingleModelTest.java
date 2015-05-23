@@ -1,7 +1,5 @@
 package com.example.zootypers.test;
 
-import org.junit.Test;
-
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Suppress;
 import android.widget.Button;
@@ -12,16 +10,16 @@ import com.example.zootypers.ui.Leaderboard;
 import com.example.zootypers.ui.TitlePage;
 import com.jayway.android.robotium.solo.Solo;
 
+import org.junit.Test;
+
 /**
- * The LeaderboardSingleModel Test will test the different sizes of the score entries
- * stored in the local database; it will test adding the different scores and seeing if
- * they are correctly added by checking the actual scores with the expected scores by
- * getting the top entry scores.
- * 
+ * The LeaderboardSingleModel Test will test the different sizes of the score entries stored in the local database; it
+ * will test adding the different scores and seeing if they are correctly added by checking the actual scores with the
+ * expected scores by getting the top entry scores.
+ * <p/>
  * (White box testing).
- * 
- * @author dyxliang
  *
+ * @author dyxliang
  */
 public class LeaderBoardSingleModelTest extends ActivityInstrumentationTestCase2<TitlePage> {
 
@@ -39,7 +37,7 @@ public class LeaderBoardSingleModelTest extends ActivityInstrumentationTestCase2
         super.setUp();
         solo = new Solo(getInstrumentation(), getActivity());
         leaderboardButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.leaderboard_button);
+                                                          findViewById(com.example.zootypers.R.id.leaderboard_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -75,8 +73,8 @@ public class LeaderBoardSingleModelTest extends ActivityInstrumentationTestCase2
     }
 
     /**
-     * Check to make sure that the model size is 5 after adding 5 entry.
-     * Also making sure that you can have duplicate scores.
+     * Check to make sure that the model size is 5 after adding 5 entry. Also making sure that you can have duplicate
+     * scores.
      */
     @Test(timeout = TIMEOUT)
     public void testSizeAfterAddingFiveDuplicateEntryToLeaderBoard() {
@@ -90,8 +88,8 @@ public class LeaderBoardSingleModelTest extends ActivityInstrumentationTestCase2
     }
 
     /**
-     * Checking to make sure that the top score only keep track of the
-     * number of top scores specified in the constructor.
+     * Checking to make sure that the top score only keep track of the number of top scores specified in the
+     * constructor.
      */
     @Test(timeout = TIMEOUT)
     public void testSizeAfterAddingMoreThanDefaultSize() {
@@ -118,14 +116,14 @@ public class LeaderBoardSingleModelTest extends ActivityInstrumentationTestCase2
     }
 
     /**
-     * Adding 3 distinct scores and checking if the highest one added is
-     * the first top score in the leaderboard model database.
+     * Adding 3 distinct scores and checking if the highest one added is the first top score in the leaderboard model
+     * database.
      */
     @Test(timeout = TIMEOUT)
     public void testTopScoreIsCorrectAfterAdding3Entries() {
         lbModel.addEntry("David", 5);
         lbModel.addEntry("David", 3);
-        lbModel.addEntry("David", 7); 
+        lbModel.addEntry("David", 7);
         ScoreEntry[] scoreList = lbModel.getTopScores();
         int expectedScore = 7;
         ScoreEntry entry = scoreList[0];
@@ -134,8 +132,8 @@ public class LeaderBoardSingleModelTest extends ActivityInstrumentationTestCase2
     }
 
     /**
-     * Add 1 more entry than the default top score size and making sure that
-     * the last highest score added gets placed into number 1 in the top score list.
+     * Add 1 more entry than the default top score size and making sure that the last highest score added gets placed
+     * into number 1 in the top score list.
      */
     @Test(timeout = TIMEOUT)
     public void testTopScoreIsCorrectAfterAdding11Entries() {
@@ -151,8 +149,8 @@ public class LeaderBoardSingleModelTest extends ActivityInstrumentationTestCase2
     }
 
     /**
-     * Testing that the clearing leaderboard method is working properly by
-     * adding 3 entries and then clearing all of them.
+     * Testing that the clearing leaderboard method is working properly by adding 3 entries and then clearing all of
+     * them.
      */
     @Test(timeout = TIMEOUT)
     public void testClearingTheLeaderboardAfterAdding3Entries() {

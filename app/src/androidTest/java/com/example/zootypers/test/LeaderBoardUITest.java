@@ -1,7 +1,5 @@
 package com.example.zootypers.test;
 
-import org.junit.Test;
-
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,11 +8,12 @@ import com.example.zootypers.ui.Leaderboard;
 import com.example.zootypers.ui.TitlePage;
 import com.jayway.android.robotium.solo.Solo;
 
+import org.junit.Test;
+
 /**
  * Test Class that tests the UI of the leaderboard. No logic involved.
- * 
- * @author oaknguyen & dyxliang
  *
+ * @author oaknguyen & dyxliang
  */
 public class LeaderBoardUITest extends ActivityInstrumentationTestCase2<TitlePage> {
 
@@ -30,7 +29,7 @@ public class LeaderBoardUITest extends ActivityInstrumentationTestCase2<TitlePag
     public void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
         leaderboardButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.leaderboard_button);
+                                                          findViewById(com.example.zootypers.R.id.leaderboard_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -130,7 +129,7 @@ public class LeaderBoardUITest extends ActivityInstrumentationTestCase2<TitlePag
      * Test Forgot Password screen in the login pop up when we click on it.
      */
     @Test(timeout = TIMEOUT)
-    public void testRelativePositionLoginForgotPasswordPopsUp(){
+    public void testRelativePositionLoginForgotPasswordPopsUp() {
         solo.clickOnText("Relative\nPosition");
         final TextView forgotButton = (TextView) solo.getView(com.example.zootypers.R.id.forgot_pw);
         solo.sleep(1000);
@@ -147,7 +146,7 @@ public class LeaderBoardUITest extends ActivityInstrumentationTestCase2<TitlePag
      * Test Registration screen in the login pop up when we click on it.
      */
     @Test(timeout = TIMEOUT)
-    public void testRelativePositionLoginRegisterPopsUp(){
+    public void testRelativePositionLoginRegisterPopsUp() {
         solo.clickOnText("Relative\nPosition");
         final TextView joinNow = (TextView) solo.getView(com.example.zootypers.R.id.join_now);
         solo.sleep(1000);
@@ -163,7 +162,7 @@ public class LeaderBoardUITest extends ActivityInstrumentationTestCase2<TitlePag
     /*
      * Private helper methods for testing the UI.
      */
-    private void ranksNamesScoreHelper(Solo solo){
+    private void ranksNamesScoreHelper(Solo solo) {
         assertTrue(solo.searchText("Rank"));
         assertTrue(solo.searchText("Player Name"));
         assertTrue(solo.searchText("Score"));

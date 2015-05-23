@@ -1,7 +1,5 @@
 package com.example.zootypers.test;
 
-import org.junit.Test;
-
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,11 +9,12 @@ import com.example.zootypers.R;
 import com.example.zootypers.ui.TitlePage;
 import com.jayway.android.robotium.solo.Solo;
 
+import org.junit.Test;
+
 /**
  * Testing the options menu by clicking on all the buttons and making sure they all work.
- * 
- * @author dyxliang
  *
+ * @author dyxliang
  */
 
 public class OptionsMenuTest extends ActivityInstrumentationTestCase2<TitlePage> {
@@ -32,8 +31,7 @@ public class OptionsMenuTest extends ActivityInstrumentationTestCase2<TitlePage>
     protected void setUp() throws Exception {
         super.setUp();
         solo = new Solo(getInstrumentation(), getActivity());
-        optionsButton = (Button) getActivity().findViewById
-		(com.example.zootypers.R.id.options_button);
+        optionsButton = (Button) getActivity().findViewById(com.example.zootypers.R.id.options_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -48,8 +46,7 @@ public class OptionsMenuTest extends ActivityInstrumentationTestCase2<TitlePage>
      */
     @Test(timeout = TIMEOUT)
     public void testClearingSinglePlayerLeaderboard() {
-        final Button clearSingleButton = (Button) 
-		solo.getView(com.example.zootypers.R.id.clearSingle);
+        final Button clearSingleButton = (Button) solo.getView(com.example.zootypers.R.id.clearSingle);
         solo.sleep(1000);
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -66,8 +63,7 @@ public class OptionsMenuTest extends ActivityInstrumentationTestCase2<TitlePage>
      */
     @Test(timeout = TIMEOUT)
     public void testClearingMultiPlayerLeaderboard() {
-        final Button clearMultiButton = (Button) 
-		solo.getView(com.example.zootypers.R.id.clearMulti);
+        final Button clearMultiButton = (Button) solo.getView(com.example.zootypers.R.id.clearMulti);
         solo.sleep(1000);
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -101,8 +97,7 @@ public class OptionsMenuTest extends ActivityInstrumentationTestCase2<TitlePage>
      * Private method for Logging out of the leaderboard clearing.
      */
     private void logout() {
-        final Button menuButton = (Button) 
-        solo.getView(com.example.zootypers.R.id.main_menu_options);
+        final Button menuButton = (Button) solo.getView(com.example.zootypers.R.id.main_menu_options);
         solo.sleep(1000);
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -173,8 +168,7 @@ public class OptionsMenuTest extends ActivityInstrumentationTestCase2<TitlePage>
      */
     @Test(timeout = TIMEOUT)
     public void testGoingBackToMainMenu() {
-        final Button menuButton = (Button) 
-		solo.getView(com.example.zootypers.R.id.main_menu_options);
+        final Button menuButton = (Button) solo.getView(com.example.zootypers.R.id.main_menu_options);
         solo.sleep(1000);
         getActivity().runOnUiThread(new Runnable() {
             @Override

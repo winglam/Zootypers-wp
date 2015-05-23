@@ -8,16 +8,16 @@ import android.util.Log;
  */
 public class PostGameScreenDisconnect extends PostGameScreenMulti {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		Log.i("Multiplayer", "opponent disconnected");
-		onCreateHelper(true);
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i("Multiplayer", "opponent disconnected");
+        onCreateHelper(true);
+    }
 
-	@Override
-	protected void opponentDisplay() {
-		// Do nothing
-	}
+    @Override
+    protected void opponentDisplay() {
+        // Do nothing
+    }
 
 }

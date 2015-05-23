@@ -1,7 +1,5 @@
 package com.example.zootypers.test;
 
-import org.junit.Test;
-
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
@@ -15,19 +13,18 @@ import com.example.zootypers.util.InternetConnectionException;
 import com.jayway.android.robotium.solo.Solo;
 import com.parse.ParseException;
 
+import org.junit.Test;
+
 /**
- * The LeaderboardMultiModel Test will test creating default constructors and ones with
- * parameters. It will test adding an entry and see if it's in the database; it will also
- * test getting the highest rank, relative scores, and top scores to make sure all the 
- * methods in the multiplayer model works properly. Since each model fetches parse data
- * at the beginning, we constantly have to update the records with a new model of the same 
- * person. This is perfectly fine since the model will never have an adding and viewing of 
- * scores in the same class instance.
- * 
+ * The LeaderboardMultiModel Test will test creating default constructors and ones with parameters. It will test adding
+ * an entry and see if it's in the database; it will also test getting the highest rank, relative scores, and top scores
+ * to make sure all the methods in the multiplayer model works properly. Since each model fetches parse data at the
+ * beginning, we constantly have to update the records with a new model of the same person. This is perfectly fine since
+ * the model will never have an adding and viewing of scores in the same class instance.
+ * <p/>
  * (White box testing).
- * 
- * @author dyxliang & oaknguyen
  *
+ * @author dyxliang & oaknguyen
  */
 public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<TitlePage> {
 
@@ -45,7 +42,7 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
      * Setting up the data and activity before running each test method.
      */
     @Override
-    public void setUp() throws Exception {        
+    public void setUp() throws Exception {
         Intent myIntent = new Intent();
         myIntent.putExtra("Testing", true);
         setActivityIntent(myIntent);
@@ -56,7 +53,7 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
 
         //start off in title page and click on leaderboard to start tests
         leaderboardButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.leaderboard_button);
+                                                          findViewById(com.example.zootypers.R.id.leaderboard_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -73,7 +70,7 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
 
     /**
      * Test to make sure that you can create a MultiLeaderBoardModel with the player name only.
-     * 
+     *
      * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT)
@@ -83,9 +80,9 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
     }
 
     /**
-     * Test to make sure you can create a constructor with parameter of size 13.
-     * Note: It was required in the code that the param is positive.
-     * 
+     * Test to make sure you can create a constructor with parameter of size 13. Note: It was required in the code that
+     * the param is positive.
+     *
      * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT)
@@ -95,9 +92,9 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
     }
 
     /**
-     * Test to make sure you can create a constructor with param of size 300.
-     * Note: It was required in the code that the param is positive.
-     * 
+     * Test to make sure you can create a constructor with param of size 300. Note: It was required in the code that the
+     * param is positive.
+     *
      * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT)
@@ -107,17 +104,15 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
     }
 
     /**
-     * Test to make sure that when you have a very high score it become the number one
-     * top score and the name of that score also matches the name in database.
-     * Adding dynamically does not show up since model gets top scores at initialization. 
-     * Must create another model to get most recent ones. 
-     * 
+     * Test to make sure that when you have a very high score it become the number one top score and the name of that
+     * score also matches the name in database. Adding dynamically does not show up since model gets top scores at
+     * initialization. Must create another model to get most recent ones.
+     *
      * @throws InternetConnectionException
-     * @throws ParseException 
+     * @throws ParseException
      */
     @Test(timeout = TIMEOUT)
-    public void testAddingVeryHighScoreAndNameExists() 
-    throws InternetConnectionException, ParseException {
+    public void testAddingVeryHighScoreAndNameExists() throws InternetConnectionException, ParseException {
         lbModel.addEntry(1000000);
         //get all top scores..need new model since top scores are fetched at model initialization
         solo.sleep(5000);
@@ -134,12 +129,12 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
 
     /**
      * Testing if adding a very high score that it is in one of the top ranks.
-     * @throws InterruptedException 
-     * @throws InternetConnectionException 
+     *
+     * @throws InterruptedException
+     * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT)
-    public void testAddingHighScoreInTopRank() 
-    throws InterruptedException, InternetConnectionException {
+    public void testAddingHighScoreInTopRank() throws InterruptedException, InternetConnectionException {
         lbModel.addEntry(33333);
         //wait for parse to save the scores
         Thread.sleep(3000);
@@ -151,14 +146,13 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
     }
 
     /**
-     * Adding a high score above and below the current player's high score and getting
-     * 1 relative high score above and below that current player and see if they match.
-     * 
+     * Adding a high score above and below the current player's high score and getting 1 relative high score above and
+     * below that current player and see if they match.
+     *
      * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT)
-    public void testAddingMultipleScoresAndChecking1RelativeScore() 
-    throws InternetConnectionException {
+    public void testAddingMultipleScoresAndChecking1RelativeScore() throws InternetConnectionException {
         //instantiate the other 2 test models
         MultiLeaderBoardModel lbModel2 = null;
         MultiLeaderBoardModel lbModel3 = null;
@@ -202,12 +196,12 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
 
     /**
      * Test if the get highest relative rank works and return the appropariate highest rel rank.
-     * @throws InterruptedException 
-     * @throws InternetConnectionException 
+     *
+     * @throws InterruptedException
+     * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT)
-    public void testGettingHighestRelativeRank() 
-    throws InterruptedException, InternetConnectionException {
+    public void testGettingHighestRelativeRank() throws InterruptedException, InternetConnectionException {
         lbModel.addEntry(200);
         //wait for parse to save the scores
         Thread.sleep(3000);
@@ -222,7 +216,7 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
 
     /**
      * Adding a player but not giving him a score and checking it the rank is still 0.
-     * 
+     *
      * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT)
@@ -234,7 +228,7 @@ public class LeaderboardMultiModelTest extends ActivityInstrumentationTestCase2<
 
     /**
      * Adding 2 highest scores in the database and make sure that the 2nd highest is rank 2.
-     * 
+     *
      * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT)

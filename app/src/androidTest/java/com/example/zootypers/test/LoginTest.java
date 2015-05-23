@@ -1,7 +1,5 @@
 package com.example.zootypers.test;
 
-import org.junit.Test;
-
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,15 +9,15 @@ import com.example.zootypers.R;
 import com.example.zootypers.ui.TitlePage;
 import com.jayway.android.robotium.solo.Solo;
 
+import org.junit.Test;
+
 /**
- * Testing to see if the login feature works correctly by logging into
- * an existing user, registering a new user, and also entering a password
- * for recovering information.
- * 
+ * Testing to see if the login feature works correctly by logging into an existing user, registering a new user, and
+ * also entering a password for recovering information.
+ * <p/>
  * (Black box testing to make sure that the login UI works.)
- * 
- * @author dyxliang
  *
+ * @author dyxliang
  */
 public class LoginTest extends ActivityInstrumentationTestCase2<TitlePage> {
 
@@ -33,6 +31,7 @@ public class LoginTest extends ActivityInstrumentationTestCase2<TitlePage> {
 
     /**
      * Create a new solo class to use robotium and then start the login process.
+     *
      * @throws Exception if activity isn't instantiated
      */
     @Override
@@ -40,7 +39,7 @@ public class LoginTest extends ActivityInstrumentationTestCase2<TitlePage> {
         super.setUp();
         solo = new Solo(getInstrumentation(), getActivity());
         multiButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.multiplayer_button);
+                                                    findViewById(com.example.zootypers.R.id.multiplayer_button);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -51,8 +50,8 @@ public class LoginTest extends ActivityInstrumentationTestCase2<TitlePage> {
     }
 
     /**
-     * Clicking on the multiplayer button without logging in and then registering
-     * for an account that is already in use.
+     * Clicking on the multiplayer button without logging in and then registering for an account that is already in
+     * use.
      */
     @Test(timeout = TIMEOUT)
     public void testingRegisteringForAccountInUse() {
@@ -78,8 +77,7 @@ public class LoginTest extends ActivityInstrumentationTestCase2<TitlePage> {
         solo.enterText(email, "davidqwe123@hotmail.com");
 
         //clck continue and seeing if the account is in use
-        final Button submitButton = (Button) 
-		solo.getView(com.example.zootypers.R.id.submit_register);
+        final Button submitButton = (Button) solo.getView(com.example.zootypers.R.id.submit_register);
         solo.sleep(1000);
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -92,8 +90,8 @@ public class LoginTest extends ActivityInstrumentationTestCase2<TitlePage> {
     }
 
     /**
-     * Clicking on the multiplayer button without logging in and then registering
-     * for an account that is already in use.
+     * Clicking on the multiplayer button without logging in and then registering for an account that is already in
+     * use.
      */
     @Test(timeout = TIMEOUT)
     public void testingRegisteringAccountInvalidInfo() {
@@ -119,8 +117,7 @@ public class LoginTest extends ActivityInstrumentationTestCase2<TitlePage> {
         solo.enterText(email, "3");
 
         //clck continue and seeing if the account is in use
-        final Button submitButton = (Button) 
-		solo.getView(com.example.zootypers.R.id.submit_register);
+        final Button submitButton = (Button) solo.getView(com.example.zootypers.R.id.submit_register);
         solo.sleep(1000);
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -149,8 +146,7 @@ public class LoginTest extends ActivityInstrumentationTestCase2<TitlePage> {
         solo.sleep(1000);
 
         //clck continue and seeing if the account is in use
-        final Button submitButton = (Button) 
-		solo.getView(com.example.zootypers.R.id.submit_register);
+        final Button submitButton = (Button) solo.getView(com.example.zootypers.R.id.submit_register);
         solo.sleep(1000);
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -210,8 +206,7 @@ public class LoginTest extends ActivityInstrumentationTestCase2<TitlePage> {
         EditText email = (EditText) solo.getView(R.id.email_forgot_password_input);
         solo.enterText(email, "davidqwe123@hotmail.com");
         solo.sleep(1000);
-        final Button resetButton = (Button) 
-		solo.getView(com.example.zootypers.R.id.reset_password_button);
+        final Button resetButton = (Button) solo.getView(com.example.zootypers.R.id.reset_password_button);
         solo.sleep(1000);
         getActivity().runOnUiThread(new Runnable() {
             @Override

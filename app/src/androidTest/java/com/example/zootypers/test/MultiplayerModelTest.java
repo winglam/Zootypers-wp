@@ -1,9 +1,5 @@
 package com.example.zootypers.test;
 
-import java.util.List;
-
-import org.junit.Test;
-
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Suppress;
@@ -24,16 +20,18 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 
+import org.junit.Test;
+
+import java.util.List;
+
 /**
- * Testing to see if the multiplayer feature works by matching against an opponents,
- * checking to see if they are playing a game, checking to see if the database stores players
- * trying to type correct and incorrect letters, testing when the player wins, loses and ties
- * a given game.
- * 
+ * Testing to see if the multiplayer feature works by matching against an opponents, checking to see if they are playing
+ * a game, checking to see if the database stores players trying to type correct and incorrect letters, testing when the
+ * player wins, loses and ties a given game.
+ * <p/>
  * (White box testing since we looked at the Multiplayer model code).
- * 
- * @author dyxliang
  *
+ * @author dyxliang
  */
 public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<TitlePage> {
 
@@ -62,7 +60,7 @@ public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<Title
 
         solo = new Solo(getInstrumentation(), getActivity());
         multiButton = (Button) getActivity().
-		findViewById(com.example.zootypers.R.id.multiplayer_button);
+                                                    findViewById(com.example.zootypers.R.id.multiplayer_button);
 
         //initial login for running all the multi-player tests (checking if logged in or not)
         if (loginFlag) {
@@ -77,8 +75,7 @@ public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<Title
             solo.enterText(username, "David");
             EditText password = (EditText) solo.getView(R.id.password_login_input);
             solo.enterText(password, "1234567");
-            final Button loginButton = (Button) 
-			solo.getView(com.example.zootypers.R.id.login_button);
+            final Button loginButton = (Button) solo.getView(com.example.zootypers.R.id.login_button);
             solo.sleep(1000);
             getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -101,8 +98,7 @@ public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<Title
         //set up opponent and proceed to the tests
         setUpOpponent();
         solo.sleep(3000);
-        final Button continueButton = (Button) 
-		solo.getView(com.example.zootypers.R.id.continue_button);
+        final Button continueButton = (Button) solo.getView(com.example.zootypers.R.id.continue_button);
         solo.sleep(1000);
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -120,15 +116,14 @@ public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<Title
     }
 
     /**
-     * Make sure that the words list is at the expected size when you set it;
-     * also make sure that all the default values are correct. Also checking
-     * to set user finish and see if opponent is finished or not.
-     * @throws InternalErrorException 
-     * @throws InternetConnectionException 
+     * Make sure that the words list is at the expected size when you set it; also make sure that all the default values
+     * are correct. Also checking to set user finish and see if opponent is finished or not.
+     *
+     * @throws InternalErrorException
+     * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT)
-    public void testMakingSureWordsListCorrectSize() 
-	throws InternetConnectionException, InternalErrorException {
+    public void testMakingSureWordsListCorrectSize() throws InternetConnectionException, InternalErrorException {
         int expected = 100;
         assertEquals(expected, wordsList.size());
         assertEquals(5, model.getWordsDisplayed().length);
@@ -140,8 +135,9 @@ public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<Title
 
     /**
      * Test typing a letter will change the indices of the model's word/letter.
-     * @throws InternalErrorException 
-     * @throws InternetConnectionException 
+     *
+     * @throws InternalErrorException
+     * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT) @Suppress
     public void testTypingCorrectLetterChangeIndex() {
@@ -174,8 +170,9 @@ public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<Title
 
     /**
      * Testing if typing an invalid letter would display the red error string.
-     * @throws InternalErrorException 
-     * @throws InternetConnectionException 
+     *
+     * @throws InternalErrorException
+     * @throws InternetConnectionException
      */
     @Test(timeout = TIMEOUT) @Suppress
     public void testInvalidCharacterPressedDoesNotChangeIndex() {
@@ -183,7 +180,7 @@ public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<Title
         char firstChar = firstWord.charAt(0);
         //try to type 6 letters and see if error string occurs
         for (char eachChar : lowChanceLetters) {
-            if(firstChar != eachChar) {
+            if (firstChar != eachChar) {
                 sendKeys(eachChar - 68);
                 solo.searchText("Wrong Letter!");
                 break;
@@ -267,9 +264,8 @@ public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<Title
      */
     private void setUpOpponent() {
         // Initialize the database
-        Parse.initialize(this.getActivity(), 
-		"E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
-		"hzPRfP284H5GuRzIFDhVxX6iR9sgTwg4tJU08Bez");
+        Parse.initialize(this.getActivity(), "E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
+                         "hzPRfP284H5GuRzIFDhVxX6iR9sgTwg4tJU08Bez");
         final int randy = (int) (Math.random() * (NUMOFWORDS));
         try {
             match = new ParseObject("Matches");
@@ -354,8 +350,7 @@ public class MultiplayerModelTest extends ActivityInstrumentationTestCase2<Title
         if (quitGameFlag) {
             quitGame();
             solo.sleep(1500);
-            final Button logoutButton = (Button) 
-            solo.getView(com.example.zootypers.R.id.logout_button);
+            final Button logoutButton = (Button) solo.getView(com.example.zootypers.R.id.logout_button);
             solo.sleep(1000);
             getActivity().runOnUiThread(new Runnable() {
                 @Override
