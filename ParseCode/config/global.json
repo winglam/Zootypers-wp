@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "ZooTypers": {
+            "applicationId": "Iy4JZxlewoSxswYgOEa6vhOSRgJkGIfDJ8wj8FtM", 
+            "masterKey": "yD5ITao7zIq0mv5izxxrqLeLcRLqjXd1zyOgkJg5"
+        }, 
+        "_default": {
+            "link": "ZooTypers"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.7"
+    }
+}
