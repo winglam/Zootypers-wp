@@ -147,7 +147,7 @@ public class SinglePlayer extends Player {
      * initial words displayed on the screen.
      *
      * @param animalID    Drawable referring to the id of the selected animal image, e.g. R.drawable.elephant_color.
-     * @param backgroudID Drawable referring to the id of the selected background image.
+     * @param backgroundID Drawable referring to the id of the selected background image.
      */
     @Override
     public void initialDisplay(Drawable animalID, Drawable backgroundID) {

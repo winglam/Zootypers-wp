@@ -19,7 +19,7 @@ public abstract class PlayerModel extends Observable {
     protected final int numWordsDisplayed;
 
     // stores an array of words
-    protected List<String> wordsList;
+    protected List<WordModel> wordsList;
 
     // array of indices that refers to strings inside wordsList
     protected int[] wordsDisplayed;
@@ -60,7 +60,7 @@ public abstract class PlayerModel extends Observable {
         // adds a total of numWordsDisplayed words to the original display list
         for (int i = 0; i < numWordsDisplayed; i++) {
             updateNextWordIndex();
-            currFirstLetters.add(wordsList.get(nextWordIndex).charAt(0));
+            currFirstLetters.add(wordsList.get(nextWordIndex).getWordString().charAt(0));
             wordsDisplayed[i] = nextWordIndex;
             currWordIndex = i;
             setChanged();
@@ -77,10 +77,10 @@ public abstract class PlayerModel extends Observable {
      *  post: nextWordIndex will always be set to a valid index of wordsList
      */
     protected void updateWordsDisplayed() {
-        currFirstLetters.remove(wordsList.get(wordsDisplayed[currWordIndex]).charAt(0));
+        currFirstLetters.remove(wordsList.get(wordsDisplayed[currWordIndex]).getWordString().charAt(0));
         updateNextWordIndex();
         // by this point the next word should not have the same first letter
-        currFirstLetters.add(wordsList.get(nextWordIndex).charAt(0));
+        currFirstLetters.add(wordsList.get(nextWordIndex).getWordString().charAt(0));
         wordsDisplayed[currWordIndex] = nextWordIndex;
         nextWordIndex++;
         if (nextWordIndex >= wordsList.size()) {
@@ -99,7 +99,7 @@ public abstract class PlayerModel extends Observable {
         if (currWordIndex == -1) {
             return null;
         }
-        return wordsList.get(wordsDisplayed[currWordIndex]);
+        return wordsList.get(wordsDisplayed[currWordIndex]).getWordString();
     }
 
     /**
@@ -141,7 +141,7 @@ public abstract class PlayerModel extends Observable {
      * word, increment if it does and check again.
      */
     private void updateNextWordIndex() {
-        while (currFirstLetters.contains(wordsList.get(nextWordIndex).charAt(0))) {
+        while (currFirstLetters.contains(wordsList.get(nextWordIndex).getWordString().charAt(0))) {
             nextWordIndex++;
             if (nextWordIndex >= wordsList.size()) {
                 nextWordIndex = 0;

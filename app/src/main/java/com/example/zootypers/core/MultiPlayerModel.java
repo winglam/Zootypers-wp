@@ -62,7 +62,7 @@ public class MultiPlayerModel extends PlayerModel {
      *
      * @param wordsDis, the number of words being displayed on the screen
      * @param uname,    the username of the user
-     * @param animalID, the int ID of a animal that is selected by the user
+     * @param animalName, the int ID of a animal that is selected by the user
      */
     public MultiPlayerModel(int wordsDis, String uname, int animalName) {
         super(wordsDis);
@@ -253,9 +253,9 @@ public class MultiPlayerModel extends PlayerModel {
             throw new InternetConnectionException();
         }
         // changing words from parse objects into a list of strings.
-        wordsList = new ArrayList<String>();
+        wordsList = new ArrayList<WordModel>();
         for (ParseObject o : wordObjects) {
-            wordsList.add(o.getString("word"));
+            wordsList.add(new WordModel(o.getString("word")));
         }
     }
 
@@ -299,7 +299,7 @@ public class MultiPlayerModel extends PlayerModel {
         if (currWordIndex == -1) {
             for (int i = 0; i < wordsDisplayed.length; i++) {
                 // if any of the first character in wordsDisplayed matched letter
-                if (wordsList.get(wordsDisplayed[i]).charAt(0) == letter) {
+                if (wordsList.get(wordsDisplayed[i]).getWordString().charAt(0) == letter) {
                     currWordIndex = i;
                     currLetterIndex = 1;
                     setChanged();
@@ -309,10 +309,10 @@ public class MultiPlayerModel extends PlayerModel {
                 }
             }
             // locked on to a word being typed (letter == the index of current letter index in the word)
-        } else if (wordsList.get(wordsDisplayed[currWordIndex]).charAt(currLetterIndex) == letter) {
+        } else if (wordsList.get(wordsDisplayed[currWordIndex]).getWordString().charAt(currLetterIndex) == letter) {
 
             // store length of current word
-            int wordLen = wordsList.get(wordsDisplayed[currWordIndex]).trim().length();
+            int wordLen = wordsList.get(wordsDisplayed[currWordIndex]).getWordString().trim().length();
             Log.i("Multiplayer", "typed the letter: " + letter);
 
             // word is completed after final letter is typed
@@ -466,7 +466,7 @@ public class MultiPlayerModel extends PlayerModel {
     /**
      * @return the words list of all the words
      */
-    public final List<String> getWordsList() {
+    public final List<WordModel> getWordsList() {
         return wordsList;
     }
 }

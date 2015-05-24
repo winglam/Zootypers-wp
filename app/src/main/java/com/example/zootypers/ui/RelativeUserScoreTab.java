@@ -59,7 +59,7 @@ public class RelativeUserScoreTab extends LeaderboardTab {
      *
      * @param seArray      the array used to fill the relative leaderboard
      * @param userRank     the rank of the user to find the relative Rank
-     * @param relativeRank how much to find the relative score of the user by
+     * @param highestRank how much to find the relative score of the user by
      * @return the new RelativeUserScoreTab with the arguments
      */
     public static RelativeUserScoreTab newInstance(ScoreEntry[] seArray, int userRank, int highestRank) {

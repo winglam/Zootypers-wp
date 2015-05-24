@@ -79,7 +79,9 @@ public class SinglePlayerModel extends PlayerModel {
             InputStream stream = am.open(file);
             String contents = IOUtils.toString(stream, "UTF-8");
             String[] tempArr = contents.split(System.getProperty("line.separator"));
-            wordsList = Arrays.asList(tempArr);
+            for (String word : tempArr) {
+                wordsList.add(new WordModel(word));
+            }
         } catch (IOException e) {
             Log.e("SinglePlayer", "error reading file for words list", e);
         }
@@ -99,7 +101,7 @@ public class SinglePlayerModel extends PlayerModel {
         if (currWordIndex == -1) {
             for (int i = 0; i < wordsDisplayed.length; i++) {
                 // if any of the first character in wordsDisplayed matched letter
-                if (wordsList.get(wordsDisplayed[i]).charAt(0) == letter) {
+                if (wordsList.get(wordsDisplayed[i]).getWordString().charAt(0) == letter) {
                     currWordIndex = i;
                     currLetterIndex = 1;
                     setChanged();
@@ -109,10 +111,10 @@ public class SinglePlayerModel extends PlayerModel {
                 }
             }
             // locked on to a word being typed (letter == the index of current letter index in the word)
-        } else if (wordsList.get(wordsDisplayed[currWordIndex]).charAt(currLetterIndex) == letter) {
+        } else if (wordsList.get(wordsDisplayed[currWordIndex]).getWordString().charAt(currLetterIndex) == letter) {
 
             // store length of current word
-            int wordLen = wordsList.get(wordsDisplayed[currWordIndex]).trim().length();
+            int wordLen = wordsList.get(wordsDisplayed[currWordIndex]).getWordString().trim().length();
 
             Log.i("SinglePlayer", "typed the letter: " + letter);
             // word is completed after final letter is typed
