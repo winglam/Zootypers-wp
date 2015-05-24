@@ -60,8 +60,8 @@ public class MultiPlayerModel extends PlayerModel {
      * level is. The constructor will initialize the words list and fills in what words the view should display on the
      * screen.
      *
-     * @param wordsDis, the number of words being displayed on the screen
-     * @param uname,    the username of the user
+     * @param wordsDis,   the number of words being displayed on the screen
+     * @param uname,      the username of the user
      * @param animalName, the int ID of a animal that is selected by the user
      */
     public MultiPlayerModel(int wordsDis, String uname, int animalName) {

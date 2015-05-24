@@ -146,7 +146,7 @@ public class SinglePlayer extends Player {
      * Displays the initial screen of the single player game. This includes the background, animal, as well as the
      * initial words displayed on the screen.
      *
-     * @param animalID    Drawable referring to the id of the selected animal image, e.g. R.drawable.elephant_color.
+     * @param animalID     Drawable referring to the id of the selected animal image, e.g. R.drawable.elephant_color.
      * @param backgroundID Drawable referring to the id of the selected background image.
      */
     @Override

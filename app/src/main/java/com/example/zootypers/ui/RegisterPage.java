@@ -35,7 +35,7 @@ public class RegisterPage extends Activity {
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
         setContentView(R.layout.activity_register_page);
-        Log.d("RegisterPage: Using Test Database", "" + TitlePage.useTestDB);
+        Log.d("RegisterPage: Database", "" + TitlePage.useTestDB);
         if (TitlePage.useTestDB) {
             Parse.initialize(this, "E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
                              "hzPRfP284H5GuRzIFDhVxX6iR9sgTwg4tJU08Bez");

@@ -106,7 +106,7 @@ public class MultiPlayer extends Player {
         bg = getIntent().getIntExtra("bg", 0);
         background = ((ImageButton) inflatedView.findViewById(bg)).getDrawable();
 
-        Log.d("MultiPlayer: Using Test Database", "" + TitlePage.useTestDB);
+        Log.d("MultiPlayer: Database", "" + TitlePage.useTestDB);
         if (TitlePage.useTestDB) { //The Testing Database on Parse
             Parse.initialize(this, "E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
                              "hzPRfP284H5GuRzIFDhVxX6iR9sgTwg4tJU08Bez");
@@ -144,9 +144,9 @@ public class MultiPlayer extends Player {
     /**
      * Displays the initial screen of the single player game.
      *
-     * @param animal      Drawable referring to the id of the selected animal image, e.g. R.drawable.elephant_color.
-     * @param backgroudID Drawable referring to the id of the selected background image.
-     * @param words       An array of the words to display. Must have a length of 5.
+     * @param animalID     Drawable referring to the id of the selected animal image, e.g. R.drawable.elephant_color.
+     * @param backgroundID Drawable referring to the id of the selected background image.
+     * @param oppAnimal    An array of the words to display. Must have a length of 5.
      */
     public void initialDisplay(Drawable animalID, Drawable backgroundID, int oppAnimal) {
         super.initialDisplay(animalID, backgroundID);
@@ -232,7 +232,7 @@ public class MultiPlayer extends Player {
     public final void goToPostGame() {
         Log.i("Multiplayer", "Ending game");
         // Show game over message before going to post game
-        findViewById(R.id.game_over).setVisibility(0);
+        findViewById(R.id.game_over).setVisibility(View.VISIBLE);
 
         Intent intent;
         try {

@@ -36,9 +36,6 @@ public class SingleplayerTab extends LeaderboardTab {
 
     /**
      * Create a new instance of SingleplayerTab with the scores as a param
-     *
-     * @param scores
-     * @return
      */
     public static SingleplayerTab newInstance(ScoreEntry[] seArray) {
         return (SingleplayerTab) newInstanceHelper(seArray, new SingleplayerTab());

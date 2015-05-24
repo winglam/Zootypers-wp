@@ -63,10 +63,10 @@ public class LeaderboardTab extends Fragment {
      * sets up the leaderboard list using the given array of entries, rank, and relativeRank. used for relative score
      * fragment
      *
-     * @param view    the leaderboard view
-     * @param seArray the list of entries to put in the leaderboard
-     * @param rank    the ranking position of the current user
-     * @param how     many users before and after to show relative to the current user
+     * @param view        the leaderboard view
+     * @param seArray     the list of entries to put in the leaderboard
+     * @param rank        the ranking position of the current user
+     * @param highestRank many users before and after to show relative to the current user
      */
     protected void setupLBList(View view, ScoreEntry[] seArray, int rank, int highestRank) {
         Log.i("Leaderboard", "setting up ranking list for relative scores");
@@ -112,9 +112,6 @@ public class LeaderboardTab extends Fragment {
 
     /**
      * Create a new instance of SingleplayerTab with the scores as a param
-     *
-     * @param scores
-     * @return
      */
     protected static LeaderboardTab newInstanceHelper(ScoreEntry[] seArray, LeaderboardTab lbt) {
         // put the argument in a bundle that the fragment can use

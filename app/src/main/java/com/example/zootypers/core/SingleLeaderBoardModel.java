@@ -131,7 +131,7 @@ public class SingleLeaderBoardModel {
             // Write the string to the file
             osw.write(write.toString());
             /* ensure that everything is
-			 * really written out and close */
+             * really written out and close */
             osw.flush();
             osw.close();
         } catch (IOException e) {

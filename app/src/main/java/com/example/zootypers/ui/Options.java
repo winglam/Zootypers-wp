@@ -127,7 +127,7 @@ public class Options extends Activity {
         Log.i("Options", "clearing multiplayer leaderboard");
 
         // Initialize the database
-        Log.d("Options: Using Test Database", "" + TitlePage.useTestDB);
+        Log.d("Options: Database", "" + TitlePage.useTestDB);
         if (TitlePage.useTestDB) {
             Parse.initialize(this, "E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
                              "hzPRfP284H5GuRzIFDhVxX6iR9sgTwg4tJU08Bez");

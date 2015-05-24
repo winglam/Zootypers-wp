@@ -49,7 +49,7 @@ public class Leaderboard extends FragmentActivity {
         setContentView(R.layout.activity_leaderboard);
 
         // Initialize the database according to whether it's a test or not.
-        Log.d("Leaderboard: Using Test Database", "" + TitlePage.useTestDB);
+        Log.d("Leaderboard: Database", "" + TitlePage.useTestDB);
         if (TitlePage.useTestDB) { //The Testing Database on Parse
             Parse.initialize(this, "E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
                              "hzPRfP284H5GuRzIFDhVxX6iR9sgTwg4tJU08Bez");
@@ -116,8 +116,6 @@ public class Leaderboard extends FragmentActivity {
 
     /**
      * Called when the user wants to view his/her score relative to other players
-     *
-     * @param view the button clicked
      */
     public void relativeUserScore() {
         // set up the Parse database and have the user log in if not already
@@ -299,13 +297,7 @@ public class Leaderboard extends FragmentActivity {
             this.tag = tag;
         }
 
-        @Override
-        public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
-            // Do nothing
-        }
-
-        @Override
-        public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
+        @Override public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
             // begin a fragment transaction and replace the current transaction
 
             if (tag.equals("relative")) {
@@ -319,9 +311,12 @@ public class Leaderboard extends FragmentActivity {
             fst.commit();
         }
 
-        @Override
-        public void onTabUnselected(Tab tab, android.app.FragmentTransaction ft) {
-            // Do nothing
+        @Override public void onTabUnselected(Tab tab, android.app.FragmentTransaction ft) {
+
+        }
+
+        @Override public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
+
         }
     }
 

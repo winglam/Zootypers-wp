@@ -57,8 +57,8 @@ public class RelativeUserScoreTab extends LeaderboardTab {
     /**
      * Create a new instance of RelativeUserScoreTab with the scores as a param
      *
-     * @param seArray      the array used to fill the relative leaderboard
-     * @param userRank     the rank of the user to find the relative Rank
+     * @param seArray     the array used to fill the relative leaderboard
+     * @param userRank    the rank of the user to find the relative Rank
      * @param highestRank how much to find the relative score of the user by
      * @return the new RelativeUserScoreTab with the arguments
      */

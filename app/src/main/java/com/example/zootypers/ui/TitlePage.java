@@ -50,7 +50,7 @@ public class TitlePage extends Activity {
 
         //used intent to allow testing or not
         useTestDB = getIntent().getBooleanExtra("Testing", false);
-        Log.d("Title: Using Test Database", "" + TitlePage.useTestDB);
+        Log.d("Title: Database", "" + TitlePage.useTestDB);
         // Initialize the database
         if (useTestDB) {
             Parse.initialize(this, "E8hfMLlgnEWvPw1auMOvGVsrTp1C6eSoqW1s6roq",
